@@ -33,4 +33,21 @@ class FoodiesTests: XCTestCase {
         }
     }
     
+    func testSavingFoods() {
+        let controller = FoodsController.sharedInstance
+        let burger = Food(name: "Burger", description: "Very nice burger")
+        let chicken = Food(name: "Chicken", description: "Perfectly fried chicken")
+        controller.saveFoods([burger, chicken])
+    }
+
+    func testRetrievingFoods() {
+        let controller = FoodsController.sharedInstance
+        let foods = controller.retrieveFoods()
+        XCTAssert(foods.count > 0)
+    }
+
+    func testDeletingAllFoods() {
+        let controller = FoodsController.sharedInstance
+        controller.saveFoods([])
+    }
 }

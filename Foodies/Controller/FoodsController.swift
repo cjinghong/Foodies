@@ -44,6 +44,7 @@ class FoodsController {
             let data = try JSONSerialization.data(withJSONObject: foodDicts, options: .prettyPrinted)
             print(String(data: data, encoding: .utf8) ?? "")
             try data.write(to: foodJsonFileURL)
+            print("Foods saved to: \(foodJsonFileURL.path)")
         } catch {
             print(error)
         }

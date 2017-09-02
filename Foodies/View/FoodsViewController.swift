@@ -26,7 +26,6 @@ class FoodsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         foodsTableView.dataSource = self
-        let controller = FoodsController.sharedInstance
     }
 
     @IBAction func addFoodTapped(_ sender: Any) {
