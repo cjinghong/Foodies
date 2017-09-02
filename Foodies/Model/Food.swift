@@ -23,31 +23,38 @@ class Food {
     // Properties
     var name: String
     var description: String
+    var dateAdded: Date
 
     // Initializer
     init(name: String, description: String) {
         self.name = name
         self.description = description
+        self.dateAdded = Date()
     }
 
     // Init from a dictionary
     init?(dict: [String : Any]) {
         let name = dict["name"] as? String
         let desc = dict["description"] as? String
+        // Date is stored as epoch
+        let dateEpoch = dict["date"] as? Double
 
         // If either name or description is nil, the init should fail.
-        if name == nil || desc == nil {
+        if name == nil || desc == nil || dateEpoch == nil {
             return nil
         } else {
             self.name = name!
             self.description = desc!
+            self.dateAdded = Date(timeIntervalSince1970: dateEpoch!)
         }
     }
 
     func toDict() -> [String : Any] {
         return [
             "name" : self.name,
-            "description" : self.description
+            "description" : self.description,
+            // Store date as epoch
+            "date" : self.dateAdded.timeIntervalSince1970
         ]
     }
 }

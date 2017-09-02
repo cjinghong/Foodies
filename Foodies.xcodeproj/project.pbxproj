@@ -15,6 +15,7 @@
 		66FAB2981F5A87220033459A /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAB2941F5A87220033459A /* Food.swift */; };
 		66FAB2991F5A87220033459A /* FoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAB2961F5A87220033459A /* FoodsViewController.swift */; };
 		66FAB29B1F5A89EC0033459A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66FAB29A1F5A89EC0033459A /* Main.storyboard */; };
+		66FAB29D1F5A9F980033459A /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAB29C1F5A9F980033459A /* AddFoodViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		66FAB2941F5A87220033459A /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		66FAB2961F5A87220033459A /* FoodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodsViewController.swift; sourceTree = "<group>"; };
 		66FAB29A1F5A89EC0033459A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		66FAB29C1F5A9F980033459A /* AddFoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				66FAB2961F5A87220033459A /* FoodsViewController.swift */,
+				66FAB29C1F5A9F980033459A /* AddFoodViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FAB29D1F5A9F980033459A /* AddFoodViewController.swift in Sources */,
 				66FAB2971F5A87220033459A /* FoodsController.swift in Sources */,
 				66FAB2991F5A87220033459A /* FoodsViewController.swift in Sources */,
 				66FAB2981F5A87220033459A /* Food.swift in Sources */,
