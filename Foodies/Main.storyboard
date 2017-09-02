@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Foods View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FoodsViewController" customModule="Foodies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="frz-db-CB3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.34901960784313724" green="0.6705882352941176" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="foodCell" textLabel="07B-Cp-I7Y" detailTextLabel="7XB-5N-tRS" rowHeight="86" style="IBUITableViewCellStyleSubtitle" id="VQB-ab-KVh">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VQB-ab-KVh" id="a9W-yi-jz7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="07B-Cp-I7Y">
+                                                    <rect key="frame" x="15" y="22" width="39" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7XB-5N-tRS">
+                                                    <rect key="frame" x="15" y="46" width="53" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.20392156862745098" green="0.28627450980392155" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkm-vU-LEv">
+                                <rect key="frame" x="156" y="621" width="63" height="30"/>
+                                <state key="normal" title="Add food"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jkm-vU-LEv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1fc-sd-dyA"/>
+                            <constraint firstItem="frz-db-CB3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8KT-xg-E21"/>
+                            <constraint firstItem="frz-db-CB3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DY9-fR-T4w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="frz-db-CB3" secondAttribute="bottom" id="PX0-8x-ItZ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jkm-vU-LEv" secondAttribute="bottom" constant="16" id="dOi-zO-vOq"/>
+                            <constraint firstAttribute="trailing" secondItem="frz-db-CB3" secondAttribute="trailing" id="fTQ-eE-FGv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="foodsTableView" destination="frz-db-CB3" id="TmL-5x-QbI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yid-LI-Vfn">
+            <objects>
+                <viewController id="YM2-JF-6Sc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ATG-4s-9i3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wjj-qn-FFO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T9E-of-3Fn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSi-a4-oXV">
+                                <rect key="frame" x="16" y="36" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0G-O9-amd">
+                                <rect key="frame" x="325" y="36" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e0G-O9-amd" firstAttribute="top" secondItem="ATG-4s-9i3" secondAttribute="bottom" constant="16" id="1jw-7f-oaF"/>
+                            <constraint firstAttribute="trailing" secondItem="e0G-O9-amd" secondAttribute="trailing" constant="16" id="Gi0-5D-pfl"/>
+                            <constraint firstItem="XSi-a4-oXV" firstAttribute="leading" secondItem="T9E-of-3Fn" secondAttribute="leading" constant="16" id="JAX-os-Ggp"/>
+                            <constraint firstItem="XSi-a4-oXV" firstAttribute="top" secondItem="ATG-4s-9i3" secondAttribute="bottom" constant="16" id="qXd-1T-cfz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4x2-NG-JOA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="38"/>
+        </scene>
+    </scenes>
+</document>
