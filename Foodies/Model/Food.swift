@@ -9,52 +9,44 @@ import Foundation
 import UIKit
 
 // Our food model, contains all the properties that a food should have.
-// Extending from Codable allows us to convert this food to JSON data,
-// and as well as converting from JSON data back to a Food Object
-class Food {
+// Needs to be a subclass of NSObject, and implements NSCoding
+// in order to archive the object into a data file.
+class Food: NSObject, NSCoding {
 
-    /*
-     Our food model will contain:
-         - Name
-         - Description
-         - Image
-     */
+    class PropertyKey {
+        static let name = "name"
+        static let image = "image"
+        static let dateAdded = "dateAdded"
+    }
     
     // Properties
     var name: String
-    var description: String
     var dateAdded: Date
+    var image: UIImage?
 
     // Initializer
-    init(name: String, description: String) {
+    init(name: String, dateAdded: Date, image: UIImage? = nil) {
         self.name = name
-        self.description = description
-        self.dateAdded = Date()
+        self.dateAdded = dateAdded
+        self.image = image
     }
 
-    // Init from a dictionary
-    init?(dict: [String : Any]) {
-        let name = dict["name"] as? String
-        let desc = dict["description"] as? String
-        // Date is stored as epoch
-        let dateEpoch = dict["date"] as? Double
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: PropertyKey.name)
+        aCoder.encode(dateAdded, forKey: PropertyKey.dateAdded)
+        aCoder.encode(image, forKey: PropertyKey.image)
+    }
 
-        // If either name or description is nil, the init should fail.
-        if name == nil || desc == nil || dateEpoch == nil {
+    required convenience init?(coder aDecoder: NSCoder) {
+        let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String
+        let dateAdded = aDecoder.decodeObject(forKey: PropertyKey.dateAdded) as? Date
+        let image = aDecoder.decodeObject(forKey: PropertyKey.image) as? UIImage
+
+        // If any one of the values is nil, the init will fail
+        if name == nil || dateAdded == nil {
             return nil
-        } else {
-            self.name = name!
-            self.description = desc!
-            self.dateAdded = Date(timeIntervalSince1970: dateEpoch!)
         }
+        self.init(name: name!, dateAdded: dateAdded!, image: image)
     }
 
-    func toDict() -> [String : Any] {
-        return [
-            "name" : self.name,
-            "description" : self.description,
-            // Store date as epoch
-            "date" : self.dateAdded.timeIntervalSince1970
-        ]
-    }
 }

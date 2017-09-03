@@ -12,11 +12,12 @@ import Foundation
 // that manages all the different kinds of food you have.
 // Any save, modify, deleting of food will be done through this controller
 class FoodsController {
-    // File directory
-    var foodJsonFileURL: URL {
+
+    // File directory to save our foods
+    var foodFileUrl: URL {
         get {
             let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-            let foodUrl = documentsDir?.appendingPathComponent("foods.json")
+            let foodUrl = documentsDir?.appendingPathComponent("foods")
             return foodUrl!
         }
     }
@@ -30,45 +31,20 @@ class FoodsController {
     }
 
     // MARK: - Saving and retrieving food
-    /// Save all the given foods to our json file
     func saveFoods(_ foods: [Food]) {
-
-        // Array of dictionaries
-        var foodDicts: [[String : Any]] = []
-        for food in foods {
-            foodDicts.append(food.toDict())
-        }
-
-        // Convert the food dictionaries to a Json data, and write it to our foodJsonFileURL
-        do {
-            let data = try JSONSerialization.data(withJSONObject: foodDicts, options: .prettyPrinted)
-            print(String(data: data, encoding: .utf8) ?? "")
-            try data.write(to: foodJsonFileURL)
-            print("Foods saved to: \(foodJsonFileURL.path)")
-        } catch {
-            print(error)
+        let successfullySaved = NSKeyedArchiver.archiveRootObject(foods, toFile: foodFileUrl.path)
+        if successfullySaved {
+            print("Successfully saved food to \(foodFileUrl.path)")
+        } else {
+            print("Failed to save food")
         }
     }
 
-    /// Retrieve all the foods from our json file
+    /// Retrieve all the foods from our food file
     func retrieveFoods() -> [Food] {
-        do {
-            var foods: [Food] = []
-            let jsonData = try Data(contentsOf: foodJsonFileURL)
-            let foodDicts = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as! [[String : Any]]
-
-            // Loop through the food dictionaries, and initialize Food objects from them
-            for dict in foodDicts {
-                if let food = Food(dict: dict) {
-                    foods.append(food)
-                }
-            }
-            return foods
-        } catch {
-            // If anything goes wrong, return an empty array
-            print(error)
-            return []
-        }
+        // Unarchive foods from file, and if it doesnt exist, returns an empty array
+        let foods = NSKeyedUnarchiver.unarchiveObject(withFile: foodFileUrl.path) as? [Food]
+        return foods ?? []
     }
 
 }

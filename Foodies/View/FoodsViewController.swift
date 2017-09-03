@@ -82,7 +82,6 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
             // Remove food, reload tableview data
             foods.remove(at: indexPath.row)
             tableView.reloadData()
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 

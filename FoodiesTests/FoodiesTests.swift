@@ -35,8 +35,8 @@ class FoodiesTests: XCTestCase {
     
     func testSavingFoods() {
         let controller = FoodsController.sharedInstance
-        let burger = Food(name: "Burger", description: "Very nice burger")
-        let chicken = Food(name: "Chicken", description: "Perfectly fried chicken")
+        let burger = Food(name: "Burger", description: "Very nice burger", dateAdded: Date())
+        let chicken = Food(name: "Chicken", description: "Perfectly fried chicken", dateAdded: Date())
         controller.saveFoods([burger, chicken])
     }
 
