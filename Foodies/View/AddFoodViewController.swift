@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol AddFoodViewControllerDelegate: class {
-    func didAddedNewFood(_ food: Food)
-    func didModifiedFood()
-}
-
 class AddFoodViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var foodImageView: UIImageView!
@@ -20,7 +15,6 @@ class AddFoodViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var dateLabel: UILabel!
 
     var food: Food?
-    weak var delegate: AddFoodViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,16 +54,14 @@ class AddFoodViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             // If a food already exist, modify it.
             food.name = foodTextField.text ?? ""
             food.image = foodImageView.image
-            delegate?.didModifiedFood()
+            FoodsController.sharedInstance.save()
         } else {
             // If a food doesn't already exist, 
             // create a new food with the properties from the textfield and textview
             let newFood = Food(name: foodTextField.text ?? "",
                                dateAdded: Date(),
                                image: foodImageView.image)
-
-            // Informs delegate that a new food has been added
-            delegate?.didAddedNewFood(newFood)
+            FoodsController.sharedInstance.addFood(newFood)
         }
         self.dismiss(animated: true, completion: nil)
     }

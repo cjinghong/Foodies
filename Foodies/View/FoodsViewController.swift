@@ -8,12 +8,11 @@
 
 import UIKit
 
-class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddFoodViewControllerDelegate {
+class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var foodsTableView: UITableView!
 
     let foodsController = FoodsController.sharedInstance
-    var foods: [Food] = []
 
     // When the view has finished loading.
     // Do all your setup here
@@ -23,9 +22,6 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Set tableview datasource and delegate
         foodsTableView.dataSource = self
         foodsTableView.delegate = self
-
-        // Retrieve foods from foodsController
-        foods = foodsController.retrieveFoods()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,24 +31,25 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBAction func addButtonTapped(_ sender: Any) {
         if let addFoodVC = storyboard?.instantiateViewController(withIdentifier: "addFoodVc") as? AddFoodViewController {
-            addFoodVC.delegate = self
             present(addFoodVC, animated: true, completion: nil)
         }
     }
 
     // MARK: - Tableview delegate and datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foods.count
+        return foodsController.foods.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath)
 
+        let food = foodsController.foods[indexPath.row]
+
         // Cell's title
-        cell.textLabel?.text = foods[indexPath.row].name
+        cell.textLabel?.text = food.name
 
         // Detail text label (Subtitle)
-        let date = foods[indexPath.row].dateAdded
+        let date = food.dateAdded
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mmaa, d MMM yyyy"
         let dateString = dateFormatter.string(from: date)
@@ -66,8 +63,8 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
 
         if let addFoodVC = storyboard?.instantiateViewController(withIdentifier: "addFoodVc") as? AddFoodViewController {
-            addFoodVC.delegate = self
-            addFoodVC.food = foods[indexPath.row]
+            let food = foodsController.foods[indexPath.row]
+            addFoodVC.food = food
             present(addFoodVC, animated: true, completion: nil)
         }
     }
@@ -80,19 +77,10 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         if editingStyle == .delete {
             // Remove food, reload tableview data
-            foods.remove(at: indexPath.row)
+            let food = foodsController.foods[indexPath.row]
+            foodsController.delete(food)
             tableView.reloadData()
         }
-    }
-
-    // MARK: - Add food view controller delegates
-    func didModifiedFood() {
-        foodsController.saveFoods(foods)
-    }
-
-    func didAddedNewFood(_ food: Food) {
-        foods.append(food)
-        foodsController.saveFoods(foods)
     }
 
 }

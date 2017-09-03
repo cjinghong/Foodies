@@ -25,26 +25,41 @@ class FoodsController {
     // FoodsController is a Singleton
     public static let sharedInstance = FoodsController()
 
+
+    private(set) var foods: [Food] = []
+
     // Empty private init
     private init() {
+        foods = retrieveFoods()
+    }
 
+    // MARK: - Add, modify, delete
+    func addFood(_ food: Food) {
+        foods.append(food)
+        save()
+    }
+
+    func delete(_ food: Food) {
+        if let foodIndex = foods.index(of: food) {
+            foods.remove(at: foodIndex)
+            save()
+        }
     }
 
     // MARK: - Saving and retrieving food
-    func saveFoods(_ foods: [Food]) {
+    func retrieveFoods() -> [Food] {
+        // Unarchive foods from file, and if it doesnt exist, returns an empty array
+        foods = NSKeyedUnarchiver.unarchiveObject(withFile: foodFileUrl.path) as? [Food] ?? []
+        return foods
+    }
+
+    func save() {
         let successfullySaved = NSKeyedArchiver.archiveRootObject(foods, toFile: foodFileUrl.path)
         if successfullySaved {
             print("Successfully saved food to \(foodFileUrl.path)")
         } else {
             print("Failed to save food")
         }
-    }
-
-    /// Retrieve all the foods from our food file
-    func retrieveFoods() -> [Food] {
-        // Unarchive foods from file, and if it doesnt exist, returns an empty array
-        let foods = NSKeyedUnarchiver.unarchiveObject(withFile: foodFileUrl.path) as? [Food]
-        return foods ?? []
     }
 
 }
