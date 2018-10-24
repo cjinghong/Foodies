@@ -90,9 +90,9 @@
                         <constraints>
                             <constraint firstItem="frz-db-CB3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DY9-fR-T4w"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="frz-db-CB3" secondAttribute="bottom" id="PX0-8x-ItZ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HqN-cv-GKj" secondAttribute="bottom" id="Vpu-Nq-OFw"/>
                             <constraint firstAttribute="trailing" secondItem="HqN-cv-GKj" secondAttribute="trailing" id="c7i-vQ-Oj5"/>
                             <constraint firstAttribute="trailing" secondItem="frz-db-CB3" secondAttribute="trailing" id="fTQ-eE-FGv"/>
+                            <constraint firstAttribute="bottom" secondItem="HqN-cv-GKj" secondAttribute="bottom" id="hhz-YX-GNy"/>
                             <constraint firstItem="frz-db-CB3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mjW-dY-Xee"/>
                             <constraint firstItem="HqN-cv-GKj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qYK-Co-u6A"/>
                         </constraints>
@@ -156,7 +156,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added on: 2:45pm, 21/04/17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Bo-fO-2au">
-                                <rect key="frame" x="16" y="336" width="343" height="16"/>
+                                <rect key="frame" x="16" y="345" width="343" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -172,9 +172,9 @@
                                 </connections>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Food name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7aJ-Sd-gTj">
-                                <rect key="frame" x="16" y="298" width="343" height="30"/>
+                                <rect key="frame" x="16" y="298" width="343" height="39"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -187,7 +187,6 @@
                             <constraint firstItem="8Bo-fO-2au" firstAttribute="top" secondItem="7aJ-Sd-gTj" secondAttribute="bottom" constant="8" id="E8A-Ku-Pbf"/>
                             <constraint firstItem="8Bo-fO-2au" firstAttribute="leading" secondItem="T9E-of-3Fn" secondAttribute="leading" constant="16" id="Kxw-YK-ae9"/>
                             <constraint firstAttribute="trailing" secondItem="7ux-og-13k" secondAttribute="trailing" constant="16" id="N8x-LC-nfg"/>
-                            <constraint firstItem="Wjj-qn-FFO" firstAttribute="top" secondItem="7fN-zR-BQI" secondAttribute="bottom" id="TVH-hW-m2i"/>
                             <constraint firstAttribute="trailing" secondItem="7aJ-Sd-gTj" secondAttribute="trailing" constant="16" id="VII-p9-Jji"/>
                             <constraint firstItem="7aJ-Sd-gTj" firstAttribute="leading" secondItem="T9E-of-3Fn" secondAttribute="leading" constant="16" id="VPR-n3-JvZ"/>
                             <constraint firstItem="7fN-zR-BQI" firstAttribute="leading" secondItem="T9E-of-3Fn" secondAttribute="leading" id="Wex-QN-erc"/>
@@ -195,6 +194,7 @@
                             <constraint firstItem="7ux-og-13k" firstAttribute="top" secondItem="Zry-Ub-ZaM" secondAttribute="bottom" constant="24" id="m0p-IZ-rz6"/>
                             <constraint firstItem="Zry-Ub-ZaM" firstAttribute="leading" secondItem="T9E-of-3Fn" secondAttribute="leading" constant="8" id="nwg-F8-Ta3"/>
                             <constraint firstItem="7ux-og-13k" firstAttribute="leading" secondItem="T9E-of-3Fn" secondAttribute="leading" constant="16" id="pR7-ki-Whi"/>
+                            <constraint firstAttribute="bottom" secondItem="7fN-zR-BQI" secondAttribute="bottom" id="zuI-v8-buY"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="lEM-wF-poj" appends="YES" id="IAL-ac-Kew"/>
